@@ -25,6 +25,7 @@ import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.ui.reader.loader.ChapterLoader
+import eu.kanade.tachiyomi.ui.reader.loader.HttpPageLoader
 import eu.kanade.tachiyomi.ui.reader.model.InsertPage
 import eu.kanade.tachiyomi.ui.reader.model.ReaderChapter
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
@@ -404,6 +405,7 @@ class ReaderViewModel(
     fun onPageSelected(page: ReaderPage) {
         val currentChapters = state.value.viewerChapters ?: return
 
+        logcat { "HOSSMARK : Page selected ${page.chapter.chapter.id}" } // HOSSMARK
         val selectedChapter = page.chapter
 
         // InsertPage and StencilPage doesn't change page progress
@@ -449,6 +451,7 @@ class ReaderViewModel(
                 manga.title,
                 manga.source,
             )
+
             if (!isNextChapterDownloaded) return@launchIO
 
             val chaptersToDownload = getNextChapters.await(manga.id, nextChapter.id!!).run {
@@ -605,6 +608,27 @@ class ReaderViewModel(
                 ),
             )
         }
+    }
+
+    /**
+     * Forcibly removes the current chapter from cache and triggers a reload.
+     */
+    fun ReloadChapter() { // HOSSMARK FUNC
+        logcat { "HOSSMARK : Reloading chapter" }
+        viewModelScope.launchIO {
+            val chapter = getCurrentChapter()?.let {
+                // loader?.ReloadChapter(it)
+                if (it.pageLoader !is HttpPageLoader) return@launchIO
+
+                val httpLoader: HttpPageLoader = it.pageLoader as HttpPageLoader
+                httpLoader.forceDeleteCache()
+                it.state = ReaderChapter.State.Loading // the chapter is set as loading
+                loader?.loadChapter(it)
+                eventChannel.trySend(Event.ReloadViewerChapters)
+            }
+        }
+
+        // loader.
     }
 
     /**

@@ -311,6 +311,7 @@ class ReaderActivity : BaseActivity() {
         menu.findItem(R.id.action_bookmark).isVisible = !isChapterBookmarked
         menu.findItem(R.id.action_remove_bookmark).isVisible = isChapterBookmarked
         menu.findItem(R.id.action_open_in_web_view).isVisible = viewModel.getSource() is HttpSource
+        menu.findItem(R.id.action_refresh).isVisible = viewModel.getSource() is HttpSource
 
         return true
     }
@@ -331,6 +332,10 @@ class ReaderActivity : BaseActivity() {
             R.id.action_remove_bookmark -> {
                 viewModel.bookmarkCurrentChapter(false)
                 invalidateOptionsMenu()
+            }
+
+            R.id.action_refresh -> {
+                viewModel.ReloadChapter()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -799,6 +804,7 @@ class ReaderActivity : BaseActivity() {
      * page is not found.
      */
     private fun moveToPageIndex(index: Int) {
+        logcat { "HOSSMARK : Moving to page " }
         val viewer = viewer ?: return
         val currentChapter = viewModel.getCurrentChapter() ?: return
         val page = currentChapter.pages?.getOrNull(index) ?: return

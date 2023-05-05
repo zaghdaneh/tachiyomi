@@ -90,9 +90,20 @@ class ChapterLoader(
                     is Format.Epub -> EpubPageLoader(format.file)
                 }
             }
-            source is HttpSource -> HttpPageLoader(chapter, source)
+            source is HttpSource -> HttpPageLoader(chapter, source) // HOSSMARK : here
             source is StubSource -> error(context.getString(R.string.source_not_installed, source.toString()))
             else -> error(context.getString(R.string.loader_not_implemented_error))
         }
+    }
+
+    // HOSSMARK : new func
+    suspend fun ReloadChapter(chapter: ReaderChapter) {
+        // for now only for httpsource
+        /*if (source !is HttpSource) return
+
+        source.forceDownloadPages()
+        chapter.pageLoader
+            ?.chapter.state = ReaderChapter.State.Loading // the chapter is set as loading
+        loadChapter(chapter)*/
     }
 }

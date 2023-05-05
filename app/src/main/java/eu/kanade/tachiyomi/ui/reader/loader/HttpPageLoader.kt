@@ -157,7 +157,7 @@ internal class HttpPageLoader(
         return pages
             .subList(pageIndex + 1, min(pageIndex + 1 + amount, pages.size))
             .mapNotNull {
-                if (it.status == Page.State.QUEUE) {
+                if (it.status == Page.State.QUEUE) { // HOSSMARK : here
                     PriorityPage(it, 0).apply { queue.offer(this) }
                 } else {
                     null
@@ -193,6 +193,10 @@ internal class HttpPageLoader(
                 throw e
             }
         }
+    }
+
+    fun forceDeleteCache() {
+        chapterCache.clear() // we clear the cache
     }
 }
 
