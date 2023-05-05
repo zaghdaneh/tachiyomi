@@ -746,8 +746,12 @@ class ReaderActivity : BaseActivity() {
      * page is not found.
      */
     private fun moveToPageIndex(index: Int) {
+<<<<<<< HEAD
         logcat { "HOSSMARK : Moving to page " }
+        val viewer = viewer ?: return
+=======
         val viewer = viewModel.state.value.viewer ?: return
+>>>>>>> 7c3bc8a4f07ae19cc22bd8508922ab6d3169a8a2
         val currentChapter = viewModel.getCurrentChapter() ?: return
         val page = currentChapter.pages?.getOrNull(index) ?: return
         viewer.moveToPage(page)
