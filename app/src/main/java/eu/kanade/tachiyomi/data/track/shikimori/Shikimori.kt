@@ -57,6 +57,10 @@ class Shikimori(id: Long) : TrackService(id) {
         return api.updateLibManga(track, getUsername())
     }
 
+    override suspend fun delete(track: Track): Track {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {
         val remoteTrack = api.findLibManga(track, getUsername())
         return if (remoteTrack != null) {

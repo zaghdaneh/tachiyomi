@@ -74,6 +74,7 @@ abstract class TrackService(val id: Long) {
 
     abstract suspend fun update(track: Track, didReadChapter: Boolean = false): Track
 
+    abstract suspend fun delete(track: Track): Track
     abstract suspend fun bind(track: Track, hasReadChapters: Boolean = false): Track
 
     abstract suspend fun search(query: String): List<TrackSearch>

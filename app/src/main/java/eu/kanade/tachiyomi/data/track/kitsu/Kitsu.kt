@@ -93,6 +93,10 @@ class Kitsu(id: Long) : TrackService(id) {
         return api.updateLibManga(track)
     }
 
+    override suspend fun delete(track: Track): Track {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {
         val remoteTrack = api.findLibManga(track, getUserId())
         return if (remoteTrack != null) {

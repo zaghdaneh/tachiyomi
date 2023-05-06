@@ -156,7 +156,16 @@ data class TrackInfoDialogHomeScreen(
                 }
             },
             onOpenInBrowser = { openTrackerInBrowser(context, it) },
-        ) { sm.unregisterTracking(it.service.id) }
+            onRemoved = {
+                navigator.push(
+                    TrackServiceRemoveScreen(
+                        track = it.track!!,
+                        serviceId = it.service.id,
+                    ),
+                )
+                sm.unregisterTracking(it.service.id)
+            },
+        )
     }
 
     /**
@@ -203,6 +212,7 @@ data class TrackInfoDialogHomeScreen(
             }
         }
 
+        // HOSSMARK
         fun unregisterTracking(serviceId: Long) {
             coroutineScope.launchNonCancellable { deleteTrack.await(mangaId, serviceId) }
         }
@@ -441,7 +451,7 @@ private data class TrackDateSelectorScreen(
         }
         TrackDateSelector(
             title = if (start) {
-                stringResource(R.string.track_started_reading_date)
+                "HOSSMARK : placeholder" // stringResource(R.string.track_started_reading_date)
             } else {
                 stringResource(R.string.track_finished_reading_date)
             },
@@ -690,5 +700,82 @@ data class TrackServiceSearchScreen(
             val queryResult: Result<List<TrackSearch>>? = null,
             val selected: TrackSearch? = null,
         )
+    }
+}
+
+private data class TrackServiceRemoveScreen(
+    private val track: Track,
+    private val serviceId: Long,
+) : Screen() {
+
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+        val sm = rememberScreenModel {
+            TrackServiceRemoveScreen.Model(
+                track = track,
+                service = Injekt.get<TrackManager>().getService(serviceId)!!,
+            )
+        }
+        AlertDialogContent(
+            modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars),
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = null,
+                )
+            },
+            title = {
+                Text(
+                    text = "Remove Anilist tracking",
+                    textAlign = TextAlign.Center,
+                )
+            },
+            text = {
+                val serviceName = stringResource(sm.getServiceNameRes())
+                Text(
+                    text = "Do you want to also remove the tracking from Anilist //HOSSMARK",
+                )
+            },
+            buttons = {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(
+                        MaterialTheme.padding.small,
+                        Alignment.End,
+                    ),
+                ) {
+                    TextButton(onClick = navigator::pop) {
+                        Text(text = stringResource(android.R.string.cancel))
+                    }
+                    FilledTonalButton(
+                        onClick = { sm.deleteMangaFromService(); navigator.pop() },
+                        colors = ButtonDefaults.filledTonalButtonColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer,
+                            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        ),
+                    ) {
+                        Text(text = stringResource(R.string.action_remove))
+                    }
+                }
+            },
+        )
+    }
+
+    private class Model(
+        private val track: Track,
+        private val service: TrackService,
+    ) : ScreenModel {
+
+        fun getServiceNameRes() = service.nameRes()
+
+        fun deleteMangaFromService() {
+            coroutineScope.launch {
+                withIOContext {
+                    service.delete(track.toDbTrack())
+                    logcat { "HOSSMARK : triggering deletion of manga from service" }
+                }
+            }
+        }
     }
 }

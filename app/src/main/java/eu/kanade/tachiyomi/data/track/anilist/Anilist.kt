@@ -9,6 +9,7 @@ import eu.kanade.tachiyomi.data.track.model.TrackSearch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import tachiyomi.core.util.system.logcat
 import uy.kohesive.injekt.injectLazy
 import tachiyomi.domain.track.model.Track as DomainTrack
 
@@ -165,6 +166,17 @@ class Anilist(id: Long) : TrackService(id) {
         }
 
         return api.updateLibManga(track)
+    }
+
+    override suspend fun delete(track: Track): Track {
+        logcat { "HOSSMARK : deleting " }
+        if (track.library_id == null || track.library_id!! == 0L) {
+            val libManga = api.findLibManga(track, getUsername().toInt())
+                ?: throw Exception("$track not found on user library")
+            track.library_id = libManga.library_id
+        }
+
+        return api.deleteLibManga(track)
     }
 
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {

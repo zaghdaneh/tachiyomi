@@ -90,6 +90,10 @@ class MyAnimeList(id: Long) : TrackService(id) {
         return api.updateItem(track)
     }
 
+    override suspend fun delete(track: Track): Track {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {
         val remoteTrack = api.findListItem(track)
         return if (remoteTrack != null) {

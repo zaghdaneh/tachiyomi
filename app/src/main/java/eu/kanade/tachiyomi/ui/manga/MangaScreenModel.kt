@@ -949,7 +949,7 @@ class MangaInfoScreenModel(
         data class DeleteChapters(val chapters: List<Chapter>) : Dialog()
         data class DuplicateManga(val manga: Manga, val duplicate: Manga) : Dialog()
         object SettingsSheet : Dialog()
-        object TrackSheet : Dialog()
+        object TrackSheet : Dialog() // HOSSMARK
         object FullCover : Dialog()
     }
 

@@ -66,6 +66,10 @@ class MangaUpdates(id: Long) : TrackService(id) {
         return track
     }
 
+    override suspend fun delete(track: Track): Track {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {
         return try {
             val (series, rating) = api.getSeriesListItem(track)
