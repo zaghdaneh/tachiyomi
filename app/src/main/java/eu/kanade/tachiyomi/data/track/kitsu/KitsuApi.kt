@@ -123,6 +123,39 @@ class KitsuApi(private val client: OkHttpClient, interceptor: KitsuInterceptor) 
         }
     }
 
+
+    suspend fun removeLibManga(track: Track): Track {
+        return withIOContext {
+            val data = buildJsonObject {
+                putJsonObject("data") {
+                    put("type", "libraryEntries")
+                    put("id", track.media_id)
+                }
+            }
+
+            with(json) {
+                authClient.newCall(
+                    Request.Builder()
+                        .url("${baseUrl}library-entries/${track.media_id}")
+                        .headers(
+                            headersOf(
+                                "Content-Type",
+                                "application/vnd.api+json",
+                            ),
+                        )
+                        .delete(
+                            data.toString().toRequestBody("application/vnd.api+json".toMediaType()),
+                        )
+                        .build(),
+                )
+                    .awaitSuccess()
+                    .parseAs<JsonObject>()
+                    .let {
+                        track
+                    }
+            }
+        }
+    }
     suspend fun search(query: String): List<TrackSearch> {
         return withIOContext {
             with(json) {

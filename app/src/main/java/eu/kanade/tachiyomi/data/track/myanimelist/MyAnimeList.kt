@@ -92,6 +92,7 @@ class MyAnimeList(id: Long) : TrackService(id) {
 
     override suspend fun delete(track: Track): Track {
         TODO("Not yet implemented")
+        return api.deleteItem(track)
     }
 
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {
