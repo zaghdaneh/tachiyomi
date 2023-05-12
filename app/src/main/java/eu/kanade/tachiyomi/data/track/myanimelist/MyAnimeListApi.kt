@@ -158,8 +158,6 @@ class MyAnimeListApi(private val client: OkHttpClient, interceptor: MyAnimeListI
         }
     }
 
-
-
     suspend fun deleteItem(track: Track): Track {
         return withIOContext {
             val formBodyBuilder = FormBody.Builder()

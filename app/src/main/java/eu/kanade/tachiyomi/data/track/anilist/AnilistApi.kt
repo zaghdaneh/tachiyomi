@@ -40,7 +40,6 @@ class AnilistApi(val client: OkHttpClient, interceptor: AnilistInterceptor) {
         .build()
 
     suspend fun addLibManga(track: Track): Track {
-        logcat { "HOSSMARK : adding track ${track.id} and mangaID ${track.manga_id}" }
         return withIOContext {
             val query = """
             |mutation AddManga(${'$'}mangaId: Int, ${'$'}progress: Int, ${'$'}status: MediaListStatus) {
@@ -117,8 +116,8 @@ class AnilistApi(val client: OkHttpClient, interceptor: AnilistInterceptor) {
         return withIOContext {
             val query = """
             |mutation DeleteManga(${'$'}listId: Int) {
-                |DeleteMediaListEntry (id: ${'$'}listId) { 
-                |   deleted
+                |DeleteMediaListEntry(id: ${'$'}listId) { 
+                    |deleted
                 |} 
             |}
             |

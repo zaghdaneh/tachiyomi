@@ -123,7 +123,6 @@ class KitsuApi(private val client: OkHttpClient, interceptor: KitsuInterceptor) 
         }
     }
 
-
     suspend fun removeLibManga(track: Track): Track {
         return withIOContext {
             val data = buildJsonObject {

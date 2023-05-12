@@ -169,7 +169,6 @@ class Anilist(id: Long) : TrackService(id) {
     }
 
     override suspend fun delete(track: Track): Track {
-        logcat { "HOSSMARK : deleting " }
         if (track.library_id == null || track.library_id!! == 0L) {
             val libManga = api.findLibManga(track, getUsername().toInt())
                 ?: throw Exception("$track not found on user library")

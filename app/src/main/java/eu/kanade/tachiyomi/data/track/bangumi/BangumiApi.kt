@@ -23,6 +23,7 @@ import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import tachiyomi.core.util.lang.withIOContext
+import tachiyomi.core.util.system.logcat
 import uy.kohesive.injekt.injectLazy
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -66,6 +67,16 @@ class BangumiApi(private val client: OkHttpClient, interceptor: BangumiIntercept
                 ),
             ).awaitSuccess()
 
+            track
+        }
+    }
+
+    suspend fun deleteLibManga(track: Track): Track {
+        return withIOContext {
+            val body = FormBody.Builder()
+                .build()
+            authClient.newCall(POST("$apiUrl/collection/${track.media_id}/delete", body = body))
+                .awaitSuccess()
             track
         }
     }

@@ -49,7 +49,7 @@ class Bangumi(id: Long) : TrackService(id) {
     }
 
     override suspend fun delete(track: Track): Track {
-        TODO("Not yet implemented")
+        return api.deleteLibManga(track)
     }
 
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {

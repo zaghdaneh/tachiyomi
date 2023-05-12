@@ -212,7 +212,6 @@ data class TrackInfoDialogHomeScreen(
             }
         }
 
-        // HOSSMARK
         fun unregisterTracking(serviceId: Long) {
             coroutineScope.launchNonCancellable { deleteTrack.await(mangaId, serviceId) }
         }
@@ -451,7 +450,7 @@ private data class TrackDateSelectorScreen(
         }
         TrackDateSelector(
             title = if (start) {
-                "HOSSMARK : placeholder" // stringResource(R.string.track_started_reading_date)
+                stringResource(R.string.track_started_reading_date)
             } else {
                 stringResource(R.string.track_finished_reading_date)
             },
@@ -734,7 +733,7 @@ private data class TrackServiceRemoveScreen(
             text = {
                 val serviceName = stringResource(sm.getServiceNameRes())
                 Text(
-                    text = "Do you want to also remove the tracking from Anilist //HOSSMARK",
+                    text = "Do you want to also remove the tracking from Anilist",
                 )
             },
             buttons = {
@@ -770,11 +769,8 @@ private data class TrackServiceRemoveScreen(
         fun getServiceNameRes() = service.nameRes()
 
         fun deleteMangaFromService() {
-            coroutineScope.launch {
-                withIOContext {
-                    service.delete(track.toDbTrack())
-                    logcat { "HOSSMARK : triggering deletion of manga from service" }
-                }
+            coroutineScope.launchNonCancellable {
+                service.delete(track.toDbTrack())
             }
         }
     }
