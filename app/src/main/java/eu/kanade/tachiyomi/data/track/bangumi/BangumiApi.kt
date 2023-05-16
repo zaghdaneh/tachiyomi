@@ -5,6 +5,7 @@ import androidx.core.net.toUri
 import eu.kanade.tachiyomi.data.database.models.Track
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.track.model.TrackSearch
+import eu.kanade.tachiyomi.network.DELETE
 import eu.kanade.tachiyomi.network.GET
 import eu.kanade.tachiyomi.network.POST
 import eu.kanade.tachiyomi.network.awaitSuccess
@@ -73,9 +74,8 @@ class BangumiApi(private val client: OkHttpClient, interceptor: BangumiIntercept
 
     suspend fun deleteLibManga(track: Track): Track {
         return withIOContext {
-            val body = FormBody.Builder()
-                .build()
-            authClient.newCall(POST("$apiUrl/collection/${track.media_id}/delete", body = body))
+            //still not working
+            authClient.newCall(DELETE("$apiUrl/collection/${track.media_id}"))
                 .awaitSuccess()
             track
         }

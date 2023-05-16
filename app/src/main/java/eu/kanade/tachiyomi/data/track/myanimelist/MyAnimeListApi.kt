@@ -160,18 +160,14 @@ class MyAnimeListApi(private val client: OkHttpClient, interceptor: MyAnimeListI
 
     suspend fun deleteItem(track: Track): Track {
         return withIOContext {
-            val formBodyBuilder = FormBody.Builder()
-                .add("status", track.toMyAnimeListStatus() ?: "reading")
-
             val request = Request.Builder()
                 .url(mangaUrl(track.media_id).toString())
-                .put(formBodyBuilder.build())
+                .delete()
                 .build()
             with(json) {
                 authClient.newCall(request)
                     .awaitSuccess()
-                    .parseAs<JsonObject>()
-                    .let { parseMangaItem(it, track) }
+                track
             }
         }
     }
