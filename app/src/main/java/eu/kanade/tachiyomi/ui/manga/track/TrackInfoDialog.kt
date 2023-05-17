@@ -726,14 +726,14 @@ private data class TrackServiceRemoveScreen(
             },
             title = {
                 Text(
-                    text = "Remove Anilist tracking",
+                    text = "Remove ${stringResource(sm.getServiceNameRes())} tracking",
                     textAlign = TextAlign.Center,
                 )
             },
             text = {
                 val serviceName = stringResource(sm.getServiceNameRes())
                 Text(
-                    text = "Do you want to also remove the tracking from Anilist",
+                    text = "Do you want to also remove the tracking from ${stringResource(sm.getServiceNameRes())} ?",
                 )
             },
             buttons = {
