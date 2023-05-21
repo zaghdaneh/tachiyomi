@@ -94,7 +94,7 @@ class Kitsu(id: Long) : TrackService(id) {
     }
 
     override suspend fun delete(track: Track): Track {
-        TODO("Not yet implemented")
+        return api.removeLibManga(track)
     }
 
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {

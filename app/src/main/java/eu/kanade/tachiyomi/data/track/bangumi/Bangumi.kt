@@ -19,6 +19,8 @@ class Bangumi(id: Long) : TrackService(id) {
 
     private val api by lazy { BangumiApi(client, interceptor) }
 
+    override val supportDeletion: Boolean = false
+
     @StringRes
     override fun nameRes() = R.string.tracker_bangumi
 
@@ -49,7 +51,8 @@ class Bangumi(id: Long) : TrackService(id) {
     }
 
     override suspend fun delete(track: Track): Track {
-        return api.deleteLibManga(track)
+        // Deletion is still impossible with Bangumi
+        return track
     }
 
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {

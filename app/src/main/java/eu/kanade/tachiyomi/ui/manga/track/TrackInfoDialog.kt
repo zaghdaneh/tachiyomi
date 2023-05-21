@@ -157,12 +157,14 @@ data class TrackInfoDialogHomeScreen(
             },
             onOpenInBrowser = { openTrackerInBrowser(context, it) },
             onRemoved = {
-                navigator.push(
-                    TrackServiceRemoveScreen(
-                        track = it.track!!,
-                        serviceId = it.service.id,
-                    ),
-                )
+                if (it.service.supportDeletion) {
+                    navigator.push(
+                        TrackServiceRemoveScreen(
+                            track = it.track!!,
+                            serviceId = it.service.id,
+                        ),
+                    )
+                }
                 sm.unregisterTracking(it.service.id)
             },
         )
@@ -711,7 +713,7 @@ private data class TrackServiceRemoveScreen(
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val sm = rememberScreenModel {
-            TrackServiceRemoveScreen.Model(
+            Model(
                 track = track,
                 service = Injekt.get<TrackManager>().getService(serviceId)!!,
             )
