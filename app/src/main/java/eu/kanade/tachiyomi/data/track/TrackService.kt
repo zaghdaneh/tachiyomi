@@ -42,9 +42,6 @@ abstract class TrackService(val id: Long) {
     // Application and remote support for reading dates
     open val supportsReadingDates: Boolean = false
 
-    // Offer possibility of deleting tracking for Apis that allow it
-    open val supportDeletion: Boolean = true
-
     @DrawableRes
     abstract fun getLogo(): Int
 
@@ -77,7 +74,6 @@ abstract class TrackService(val id: Long) {
 
     abstract suspend fun update(track: Track, didReadChapter: Boolean = false): Track
 
-    abstract suspend fun delete(track: Track): Track
     abstract suspend fun bind(track: Track, hasReadChapters: Boolean = false): Track
 
     abstract suspend fun search(query: String): List<TrackSearch>

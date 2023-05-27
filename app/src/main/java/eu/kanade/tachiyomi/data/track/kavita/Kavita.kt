@@ -67,10 +67,6 @@ class Kavita(private val context: Context, id: Long) : TrackService(id), Enhance
         return api.updateProgress(track)
     }
 
-    override suspend fun delete(track: Track): Track {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun bind(track: Track, hasReadChapters: Boolean): Track {
         return track
     }

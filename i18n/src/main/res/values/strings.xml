@@ -728,6 +728,9 @@
     <string name="track_remove_date_conf_title">Remove date?</string>
     <string name="track_remove_start_date_conf_text">This will remove your previously selected start date from %s</string>
     <string name="track_remove_finish_date_conf_text">This will remove your previously selected finish date from %s</string>
+    <string name="track_delete_remote_title">Remove %s tracking</string>
+    <string name="track_delete_remote_text">Do you want to also remove the tracking from %s ?</string>
+    <string name="track_delete_remote_no">Only remove locally</string>
 
     <!-- Category activity -->
     <string name="error_category_exists">A category with this name already exists!</string>

@@ -25,7 +25,6 @@ import kotlinx.serialization.json.putJsonObject
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
 import tachiyomi.core.util.lang.withIOContext
-import tachiyomi.core.util.system.logcat
 import uy.kohesive.injekt.injectLazy
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
@@ -112,7 +111,6 @@ class AnilistApi(val client: OkHttpClient, interceptor: AnilistInterceptor) {
     }
 
     suspend fun deleteLibManga(track: Track): Track {
-        logcat { "sending request ! deleting : ${track.id} with mangaid ${track.manga_id}" }
         return withIOContext {
             val query = """
             |mutation DeleteManga(${'$'}listId: Int) {
@@ -128,20 +126,9 @@ class AnilistApi(val client: OkHttpClient, interceptor: AnilistInterceptor) {
                     put("listId", track.library_id)
                 }
             }
-            with(json) {
-                authClient.newCall(
-                    POST(
-                        apiUrl,
-                        body = payload.toString().toRequestBody(jsonMime),
-                    ),
-                )
-                    .awaitSuccess()
-                    .parseAs<JsonObject>()
-                    .let {
-                        logcat { "Successfully deleted the track" }
-                        track
-                    }
-            }
+            authClient.newCall(POST(apiUrl, body = payload.toString().toRequestBody(jsonMime)))
+                .awaitSuccess()
+            track
         }
     }
     suspend fun search(search: String): List<TrackSearch> {

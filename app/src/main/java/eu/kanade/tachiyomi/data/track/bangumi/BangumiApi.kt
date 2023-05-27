@@ -70,18 +70,6 @@ class BangumiApi(private val client: OkHttpClient, interceptor: BangumiIntercept
         }
     }
 
-    suspend fun deleteLibManga(track: Track): Track {
-        // Deletion is still impossible with Bangumi
-        return track
-
-        /*return withIOContext {
-            // still not working
-            authClient.newCall(DELETE("$apiUrl/collection/${track.media_id}"))
-                .awaitSuccess()
-            track
-        }*/
-    }
-
     suspend fun search(search: String): List<TrackSearch> {
         return withIOContext {
             val url = "$apiUrl/search/subject/${URLEncoder.encode(search, StandardCharsets.UTF_8.name())}"

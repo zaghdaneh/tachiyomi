@@ -47,6 +47,7 @@ import eu.kanade.presentation.track.TrackServiceSearch
 import eu.kanade.presentation.track.TrackStatusSelector
 import eu.kanade.presentation.util.Screen
 import eu.kanade.tachiyomi.R
+import eu.kanade.tachiyomi.data.track.DeletableTrackService
 import eu.kanade.tachiyomi.data.track.EnhancedTrackService
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.track.TrackService
@@ -157,7 +158,7 @@ data class TrackInfoDialogHomeScreen(
             },
             onOpenInBrowser = { openTrackerInBrowser(context, it) },
             onRemoved = {
-                if (it.service.supportDeletion) {
+                if (it.service is DeletableTrackService) {
                     navigator.push(
                         TrackServiceRemoveScreen(
                             track = it.track!!,
@@ -718,6 +719,7 @@ private data class TrackServiceRemoveScreen(
                 service = Injekt.get<TrackManager>().getService(serviceId)!!,
             )
         }
+        val serviceName = stringResource(sm.getServiceNameRes())
         AlertDialogContent(
             modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars),
             icon = {
@@ -728,14 +730,13 @@ private data class TrackServiceRemoveScreen(
             },
             title = {
                 Text(
-                    text = "Remove ${stringResource(sm.getServiceNameRes())} tracking",
+                    text = stringResource(R.string.track_delete_remote_title, serviceName),
                     textAlign = TextAlign.Center,
                 )
             },
             text = {
-                val serviceName = stringResource(sm.getServiceNameRes())
                 Text(
-                    text = "Do you want to also remove the tracking from ${stringResource(sm.getServiceNameRes())} ?",
+                    text = stringResource(R.string.track_delete_remote_text, serviceName),
                 )
             },
             buttons = {
@@ -747,7 +748,7 @@ private data class TrackServiceRemoveScreen(
                     ),
                 ) {
                     TextButton(onClick = navigator::pop) {
-                        Text(text = stringResource(android.R.string.cancel))
+                        Text(text = stringResource(R.string.track_delete_remote_no))
                     }
                     FilledTonalButton(
                         onClick = { sm.deleteMangaFromService(); navigator.pop() },
@@ -772,7 +773,7 @@ private data class TrackServiceRemoveScreen(
 
         fun deleteMangaFromService() {
             coroutineScope.launchNonCancellable {
-                service.delete(track.toDbTrack())
+                (service as DeletableTrackService).delete(track.toDbTrack())
             }
         }
     }
