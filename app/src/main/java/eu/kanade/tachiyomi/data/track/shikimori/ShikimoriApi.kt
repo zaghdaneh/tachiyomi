@@ -114,6 +114,7 @@ class ShikimoriApi(private val client: OkHttpClient, interceptor: ShikimoriInter
             title = mangas["name"]!!.jsonPrimitive.content
             media_id = obj["id"]!!.jsonPrimitive.long
             total_chapters = mangas["chapters"]!!.jsonPrimitive.int
+            library_id = obj["id"]!!.jsonPrimitive.long
             last_chapter_read = obj["chapters"]!!.jsonPrimitive.float
             score = (obj["score"]!!.jsonPrimitive.int).toFloat()
             status = toTrackStatus(obj["status"]!!.jsonPrimitive.content)
