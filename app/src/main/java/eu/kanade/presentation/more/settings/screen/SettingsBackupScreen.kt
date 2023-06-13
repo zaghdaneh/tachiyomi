@@ -10,11 +10,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +26,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -83,7 +87,7 @@ object SettingsBackupScreen : SearchableSettings {
         val scope = rememberCoroutineScope()
         val context = LocalContext.current
 
-        var flag by rememberSaveable { mutableStateOf(0) }
+        var flag by rememberSaveable { mutableIntStateOf(0) }
         val chooseBackupDir = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.CreateDocument("application/*"),
         ) {
@@ -255,18 +259,30 @@ object SettingsBackupScreen : SearchableSettings {
                         onDismissRequest = onDismissRequest,
                         title = { Text(text = stringResource(R.string.pref_restore_backup)) },
                         text = {
-                            val msg = buildString {
-                                append(stringResource(R.string.backup_restore_content_full))
-                                if (err.sources.isNotEmpty()) {
-                                    append("\n\n").append(stringResource(R.string.backup_restore_missing_sources))
-                                    err.sources.joinTo(this, separator = "\n- ", prefix = "\n- ")
+                            Column(
+                                modifier = Modifier.verticalScroll(rememberScrollState()),
+                            ) {
+                                val msg = buildString {
+                                    append(stringResource(R.string.backup_restore_content_full))
+                                    if (err.sources.isNotEmpty()) {
+                                        append("\n\n").append(stringResource(R.string.backup_restore_missing_sources))
+                                        err.sources.joinTo(
+                                            this,
+                                            separator = "\n- ",
+                                            prefix = "\n- ",
+                                        )
+                                    }
+                                    if (err.trackers.isNotEmpty()) {
+                                        append("\n\n").append(stringResource(R.string.backup_restore_missing_trackers))
+                                        err.trackers.joinTo(
+                                            this,
+                                            separator = "\n- ",
+                                            prefix = "\n- ",
+                                        )
+                                    }
                                 }
-                                if (err.trackers.isNotEmpty()) {
-                                    append("\n\n").append(stringResource(R.string.backup_restore_missing_trackers))
-                                    err.trackers.joinTo(this, separator = "\n- ", prefix = "\n- ")
-                                }
+                                Text(text = msg)
                             }
-                            Text(text = msg)
                         },
                         confirmButton = {
                             TextButton(
@@ -327,7 +343,7 @@ object SettingsBackupScreen : SearchableSettings {
     }
 
     @Composable
-    fun getAutomaticBackupGroup(
+    private fun getAutomaticBackupGroup(
         backupPreferences: BackupPreferences,
     ): Preference.PreferenceGroup {
         val context = LocalContext.current
@@ -402,7 +418,7 @@ private data class MissingRestoreComponents(
     val trackers: List<String>,
 )
 
-data class InvalidRestore(
+private data class InvalidRestore(
     val uri: Uri,
     val message: String,
 )

@@ -63,7 +63,7 @@
     <string name="pref_category_tracking">Tracking</string>
     <string name="pref_category_advanced">Erweitert</string>
     <string name="pref_category_about">Über</string>
-    <string name="pref_library_columns">Elemente pro Zeile</string>
+    <string name="pref_library_columns">Kachelgröße</string>
     <string name="portrait">Hochformat</string>
     <string name="landscape">Querformat</string>
     <string name="pref_library_update_interval">Automatische Aktualisierungen</string>
@@ -94,10 +94,10 @@
     <string name="white_background">Weiß</string>
     <string name="black_background">Schwarz</string>
     <string name="pref_viewer_type">Standard-Lesemodus</string>
-    <string name="left_to_right_viewer">Links nach rechts</string>
-    <string name="right_to_left_viewer">Rechts nach links</string>
-    <string name="vertical_viewer">Vertikal</string>
-    <string name="webtoon_viewer">Webtoon</string>
+    <string name="left_to_right_viewer">Seiten (links nach rechts)</string>
+    <string name="right_to_left_viewer">Seiten (rechts nach links)</string>
+    <string name="vertical_viewer">Seiten (vertikal)</string>
+    <string name="webtoon_viewer">Langer Streifen</string>
     <string name="pref_image_scale_type">Skalierung</string>
     <string name="scale_type_fit_screen">Bild ausfüllen</string>
     <string name="scale_type_stretch">Strecken</string>
@@ -170,7 +170,7 @@
     <string name="ongoing">Fortlaufend</string>
     <string name="unknown">Unbekannt</string>
     <string name="licensed">Lizenziert</string>
-    <string name="remove_from_library">Aus Bibliothek entfernen</string>
+    <string name="remove_from_library">Aus der Bibliothek entfernen</string>
     <string name="delete_downloads_for_manga">Heruntergeladene Kapitel löschen?</string>
     <string name="display_mode_chapter">Kapitel %1$s</string>
     <string name="chapter_downloading_progress">Wird heruntergeladen (%1$d/%2$d)</string>
@@ -355,7 +355,6 @@
         <item quantity="other">Für %d Einträge</item>
     </plurals>
     <string name="action_menu">Menü</string>
-    <string name="action_reorganize_by">Umordnen</string>
     <string name="action_newest">Neueste</string>
     <string name="action_oldest">Älteste</string>
     <string name="action_move_to_top">Nach oben verschieben</string>
@@ -371,11 +370,11 @@
     <string name="pref_category_reading">Beim Lesen</string>
     <string name="label_sources">Quellen</string>
     <string name="action_select_inverse">Auswahl umkehren</string>
-    <string name="vertical_plus_viewer">Kontinuierlich vertikal</string>
-    <string name="webtoon_side_padding_25">25 %</string>
-    <string name="webtoon_side_padding_20">20 %</string>
-    <string name="webtoon_side_padding_15">15 %</string>
-    <string name="webtoon_side_padding_10">10 %</string>
+    <string name="vertical_plus_viewer">Langer Streifen mit Lücken</string>
+    <string name="webtoon_side_padding_25">25%</string>
+    <string name="webtoon_side_padding_20">20%</string>
+    <string name="webtoon_side_padding_15">15%</string>
+    <string name="webtoon_side_padding_10">10%</string>
     <string name="webtoon_side_padding_0">Keine</string>
     <string name="pref_webtoon_side_padding">Seitenränder</string>
     <string name="pinned_sources">Angeheftet</string>
@@ -390,7 +389,6 @@
     <string name="information_webview_required">WebView ist für Tachiyomi erforderlich</string>
     <string name="licenses">Quelloffene Lizenzen</string>
     <string name="website">Webseite</string>
-    <string name="pref_confirm_exit">Beenden bestätigen</string>
     <string name="label_downloaded_only">Nur Heruntergeladenes</string>
     <string name="recent_manga_time">Kap. %1$s - %2$s</string>
     <string name="restoring_backup_error">Sicherungswiederherstellung fehlgeschlagen</string>
@@ -495,7 +493,7 @@
     <string name="pref_incognito_mode_summary">Leseverlauf pausieren</string>
     <string name="pref_incognito_mode">Inkognito-Modus</string>
     <string name="pref_clear_history">Verlauf löschen</string>
-    <string name="clear_history_confirmation">Bist du sicher\? Der gesamte Verlauf wird verloren sein.</string>
+    <string name="clear_history_confirmation">Bist du sicher\? Der gesamte Verlauf wird gelöscht.</string>
     <string name="clear_history_completed">Verlauf gelöscht</string>
     <string name="spen_next_page">Nächste Seite</string>
     <string name="spen_previous_page">Vorherige Seite</string>
@@ -600,7 +598,7 @@
     <string name="pref_relative_time_long">Lang (Kurz+, vor n Tagen)</string>
     <plurals name="relative_time">
         <item quantity="one">Gestern</item>
-        <item quantity="other">vor %1$d Tagen</item>
+        <item quantity="other">Vor %1$d Tagen</item>
     </plurals>
     <string name="relative_time_today">Heute</string>
     <string name="pref_category_timestamps">Zeitstempel</string>
@@ -644,11 +642,11 @@
     <string name="on_hiatus">Unterbrochen</string>
     <string name="publishing_finished">Veröffentlichung abgeschlossen</string>
     <string name="action_faq_and_guides">Häufige Fragen und Leitfäden</string>
-    <string name="webtoon_side_padding_5">5 %</string>
+    <string name="webtoon_side_padding_5">5%</string>
     <string name="action_show_manga">Eintrag anzeigen</string>
     <string name="action_display_cover_only_grid">Nur-Cover-Kacheln</string>
     <string name="pref_landscape_zoom">Bild im Querformat vergrößern</string>
-    <string name="pref_navigate_pan">Beim Tippen innerhalb breiter Seiten navigieren</string>
+    <string name="pref_navigate_pan">Innerhalb breiter Seiten navigieren</string>
     <string name="pref_update_only_started">Die noch nicht begonnen wurden</string>
     <string name="skipped_reason_completed">Übersprungen, da die Serie abgeschlossen ist</string>
     <string name="skipped_reason_not_caught_up">Übersprungen, weil es ungelesene Kapitel gibt</string>
@@ -662,7 +660,7 @@
     <string name="disabled_nav">Deaktiviert</string>
     <string name="error_saving_picture">Fehler beim Speichern des Bildes</string>
     <string name="update_check_fdroid_migration_info">Eine neue Version ist aus dem offiziellen Repository verfügbar. Tippe, um zu erfahren, wie man aus inoffiziellen F-Droid-Versionen migriert.</string>
-    <string name="empty_backup_error">Keine zu sichernden Bibliothekseinträge</string>
+    <string name="empty_backup_error">Keine zu sichernden Bibliothekseinträge verfügbar</string>
     <string name="update_check_open">Auf GitHub öffnen</string>
     <string name="pref_clear_webview_data">WebView-Daten löschen</string>
     <string name="webview_data_deleted">WebView-Daten gelöscht</string>
@@ -727,7 +725,7 @@
     <string name="pref_appearance_summary">Thema, Datums- und Zeitformat</string>
     <string name="pref_reader_summary">Lesemodus, Anzeige, Navigation</string>
     <string name="pref_downloads_summary">Automatische Downloads, im Voraus herunterladen</string>
-    <string name="pref_library_summary">Kategorien, globale Aktualisierungen</string>
+    <string name="pref_library_summary">Kategorien, globale Aktualisierungen, Kapitelaktionen</string>
     <string name="crash_screen_restart_application">Anwendung neustarten</string>
     <string name="pref_tracking_summary">Einweg-Synchronisation, erweiterte Synchronisation</string>
     <string name="pref_browse_summary">Quellen, Erweiterungen, globale Suche</string>
@@ -775,7 +773,6 @@
     <string name="information_no_manga_category">Kategorie ist leer</string>
     <string name="pref_library_update_show_tab_badge">Anzahl an Ungelesenem auf dem „Neues“-Symbol anzeigen</string>
     <string name="copied_to_clipboard_plain">In die Zwischenablage kopiert</string>
-    <string name="pref_worker_info">Worker-Infos</string>
     <string name="enhanced_services_not_installed">Verfügbar, aber Quelle ist nicht installiert: %s</string>
     <string name="pref_skip_dupe_chapters">Doppelte Kapitel überspringen</string>
     <string name="confirm_add_duplicate_manga">In deiner Bibliothek gibt es einen Eintrag mit dem gleichen Namen.
@@ -797,6 +794,34 @@
         <item quantity="one">%1$s Kapitel fehlt</item>
         <item quantity="other">%1$s Kapitel fehlen</item>
     </plurals>
-    <string name="missing_chapters_unknown">Es könnten Kapitel fehlen</string>
     <string name="pref_page_rotate_invert">Ausrichtung gedrehter breiter Seiten spiegeln</string>
+    <string name="pref_debug_info">Debug-Info</string>
+    <string name="pref_chapter_swipe">Kapitelaktionen</string>
+    <string name="pref_chapter_swipe_end">Aktion beim Streichen nach rechts</string>
+    <string name="pref_chapter_swipe_start">Aktion beim Streichen nach links</string>
+    <string name="pref_double_tap_zoom">Zum Zoomen doppeltippen</string>
+    <string name="pref_library_columns_per_row">%d pro Zeile</string>
+    <string name="intervals_header">Intervalle</string>
+    <plurals name="day">
+        <item quantity="one">1 Tag</item>
+        <item quantity="other">%d Tage</item>
+    </plurals>
+    <string name="action_filter_interval_custom">Benutzerdefiniertes Abrufintervall</string>
+    <string name="action_set_interval">Intervall einstellen</string>
+    <string name="action_filter_interval_long">Monatlich abrufen (28 Tage)</string>
+    <string name="action_sort_next_updated">Nächste erwartete Aktualisierung</string>
+    <string name="pref_update_only_in_release_period">Außerhalb des erwarteten Veröffentlichungszeitraums</string>
+    <string name="pref_update_release_grace_period">Erwarteter Veröffentlichungstoleranzzeitraum</string>
+    <plurals name="pref_update_release_leading_days">
+        <item quantity="one">1 Tag davor</item>
+        <item quantity="other">%d Tage davor</item>
+    </plurals>
+    <string name="manga_modify_calculated_interval_title">Intervall anpassen</string>
+    <plurals name="pref_update_release_following_days">
+        <item quantity="one">1 Tag danach</item>
+        <item quantity="other">%d Tage danach</item>
+    </plurals>
+    <string name="manga_modify_interval_title">Intervall ändern</string>
+    <string name="skipped_reason_not_in_release_period">Übersprungen, da heute keine Veröffentlichung erwartet wurde</string>
+    <string name="pref_update_release_grace_period_info">Ein niedriger Toleranzzeitraum wird empfohlen, um die Auslastung der Quellen zu minimieren. Je mehr Überprüfungen für einen Eintrag fehlschlagen, desto länger wird das Intervall zwischen den Überprüfungen, mit einem Maximum von 28 Tagen.</string>
 </resources>

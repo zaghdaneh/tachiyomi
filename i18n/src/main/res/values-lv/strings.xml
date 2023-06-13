@@ -122,7 +122,6 @@
     <string name="information_no_recent_manga">Nekas nesen lasīts</string>
     <string name="information_no_recent">Nekas nesen lasīts</string>
     <string name="action_newest">Jaunākais</string>
-    <string name="action_reorganize_by">Pārkārtot</string>
     <string name="action_cancel_all">Atcelt visu</string>
     <string name="action_unpin">Atspraust</string>
     <string name="action_pin">Piespraust</string>
@@ -149,7 +148,6 @@
     <string name="lock_with_biometrics">Vajadzīgs atbloķēt</string>
     <string name="pref_category_security">Drošība un privātums</string>
     <string name="pref_manage_notifications">Pārvaldiet paziņojumus</string>
-    <string name="pref_confirm_exit">Apstipriniet izeju</string>
     <string name="pref_date_format">Datuma formāts</string>
     <string name="theme_dark">Ieslēgts</string>
     <string name="theme_light">Izslēgts</string>
@@ -773,7 +771,6 @@
         <item quantity="one">Trūkst %1$s nodaļa</item>
         <item quantity="other">Trūkst %1$s nodaļas</item>
     </plurals>
-    <string name="missing_chapters_unknown">Iespējams, trūkst nodaļu</string>
     <plurals name="download_amount">
         <item quantity="zero">Nākošā %d nodaļa</item>
         <item quantity="one">Nākošā %d nodaļa</item>
@@ -795,7 +792,6 @@
         <item quantity="one">Nākamā nelasītā nodaļa</item>
         <item quantity="other">Nākamās %d nelasītas nodaļas</item>
     </plurals>
-    <string name="pref_worker_info">Worker info</string>
     <string name="action_not_now">Ne tagad</string>
     <string name="action_search_hint">Meklē…</string>
     <string name="fdroid_warning">F-Droid versijas netiek oficiāli atbalstītas.

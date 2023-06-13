@@ -65,7 +65,7 @@
     <string name="pref_category_tracking">التتبع</string>
     <string name="pref_category_advanced">اﻹعدادات المتقدمة</string>
     <string name="pref_category_about">حول التطبيق</string>
-    <string name="pref_library_columns">العناصر لكل صف</string>
+    <string name="pref_library_columns">حجم الشبكة</string>
     <string name="portrait">طوليٌّ</string>
     <string name="landscape">عرضيٌّ</string>
     <string name="pref_library_update_interval">التحديثات التلقائية</string>
@@ -96,10 +96,10 @@
     <string name="white_background">أبيض</string>
     <string name="black_background">أسود</string>
     <string name="pref_viewer_type">وضع القراءة الافتراضي</string>
-    <string name="left_to_right_viewer">يسارًا فيمينًا</string>
-    <string name="right_to_left_viewer">يمينًا فيسارًا</string>
-    <string name="vertical_viewer">عموديٌّ</string>
-    <string name="webtoon_viewer">الويبتون</string>
+    <string name="left_to_right_viewer">صفحيٌّ (يسارًا فيمينًا)</string>
+    <string name="right_to_left_viewer">صفحيٌّ (يمينًا فيسارًا)</string>
+    <string name="vertical_viewer">صفحيٌّ (عموديٌّ)</string>
+    <string name="webtoon_viewer">شريط طويل</string>
     <string name="pref_image_scale_type">كيفية ضبط الأبعاد</string>
     <string name="scale_type_fit_screen">ملائمة الشاشة</string>
     <string name="scale_type_stretch">التمدد</string>
@@ -302,7 +302,6 @@
     <string name="action_move_to_top">نقل إلى الأعلى</string>
     <string name="action_oldest">الأقدم</string>
     <string name="action_newest">الأَحدثْ</string>
-    <string name="action_reorganize_by">إعادة ترتيب</string>
     <string name="action_cancel_all">إلغاء الكل</string>
     <string name="action_view_chapters">عرض الفصول</string>
     <string name="action_sort_latest_chapter">أحدث فصل</string>
@@ -350,7 +349,6 @@
     <string name="webtoon_side_padding_15">١٥٪</string>
     <string name="webtoon_side_padding_10">١٠٪</string>
     <string name="webtoon_side_padding_0">بلا</string>
-    <string name="pref_confirm_exit">تأكيد الخروج</string>
     <string name="action_unpin">إلغاء التثبيت</string>
     <string name="action_pin">تثبيت</string>
     <string name="action_select_inverse">عكس التحديد</string>
@@ -425,7 +423,7 @@
     <string name="downloaded_only_summary">تصفية جميع الإدخالات في مكتبتك</string>
     <string name="pref_search_pinned_sources_only">البحث فقط عن مصادر مثبتة في البحث العالمي</string>
     <string name="pref_webtoon_side_padding">الإزاحة الجانبية</string>
-    <string name="vertical_plus_viewer">عمودي مستمر</string>
+    <string name="vertical_plus_viewer">شريط طويل بين أجزائه فجوات</string>
     <string name="gray_background">رمادي</string>
     <string name="pref_true_color_summary">يزيد من سلاسة تدرج الالوان بالصور، ولكن قد يؤثر على الأداء</string>
     <plurals name="lock_after_mins">
@@ -699,7 +697,7 @@
     <string name="skipped_reason_not_caught_up">تُخُطِّيت لوجود فصول لم تُقرأ</string>
     <string name="pref_update_only_started">لم يبدأ هذا بعد</string>
     <string name="skipped_reason_completed">تُخُطِّيت لأنها تمِّت</string>
-    <string name="pref_navigate_pan">تحريك الصور أثناء النقر</string>
+    <string name="pref_navigate_pan">حرِّك الصور الواسعة</string>
     <string name="pref_landscape_zoom">كبر الصوره الأفقية</string>
     <string name="channel_skipped">متجاوَز</string>
     <string name="error_saving_picture">خطأ أثناء حفظ الصورة</string>
@@ -780,7 +778,7 @@
     <string name="crash_screen_restart_application">أعد تشغيل التطبيق</string>
     <string name="pref_general_summary">لغة التطبيق، الإشعارات</string>
     <string name="pref_appearance_summary">مظهر، التاريخ والوقت</string>
-    <string name="pref_library_summary">الفئات، التحديث العالمي</string>
+    <string name="pref_library_summary">الفئات، التحديث الشامل، تمرير الفصول</string>
     <string name="pref_reader_summary">وضع القراءة، العرض، التنقل</string>
     <string name="pref_downloads_summary">التحميل التلقائي، التحميل مقدما</string>
     <string name="pref_tracking_summary">تزامن التقدم أحادي الاتجاه، مزامنة محسّنة</string>
@@ -832,7 +830,6 @@
 \n
 \nهل مازلت ترغب في الاستمرار؟</string>
     <string name="copied_to_clipboard_plain">نسخ الى الحافظة</string>
-    <string name="pref_worker_info">معلومات العمل</string>
     <string name="track_error">%1$s خطأ: %2$s</string>
     <string name="information_required_plain">*مطلوب</string>
     <string name="action_copy_to_clipboard">نسخ إلى الحافظة</string>
@@ -856,7 +853,52 @@
         <item quantity="many">%1$s فصلًا مفقودًا</item>
         <item quantity="other">%1$s فصل مفقود</item>
     </plurals>
-    <string name="missing_chapters_unknown">لعلَّه فاقد بعض الفصول</string>
     <string name="pref_page_rotate">دوِّر الصفحات العريضة لتلائم الشاشة</string>
     <string name="pref_page_rotate_invert">اعكس اتِّجاه الصفحات العريضة المدوَّرة</string>
+    <string name="pref_debug_info">معلومات التنقيح</string>
+    <string name="pref_double_tap_zoom">انقر مرتين لتكبِّر</string>
+    <string name="pref_chapter_swipe">تمرير الفصول</string>
+    <string name="pref_chapter_swipe_end">إجراء التمرير الأيسر</string>
+    <string name="pref_chapter_swipe_start">إجراء التمرير الأيمن</string>
+    <string name="pref_library_columns_per_row">%d كلَّ صفٍّ</string>
+    <string name="action_set_interval">عيِّد المدة</string>
+    <string name="action_filter_interval_custom">مدة جلب مخصَّصة</string>
+    <string name="action_filter_interval_long">اجلب كلَّ شهر (٢٨ يومًا)</string>
+    <string name="action_filter_interval_passed">مرت مدة الالتماس</string>
+    <string name="action_filter_interval_late">١٠+ التماسات متأخرة</string>
+    <string name="action_filter_interval_dropped">ربما أُلغيت؟ ٢٠ التماسًا متأخرًا وشهران</string>
+    <string name="manga_display_interval_title">قدِّر كلَّ</string>
+    <string name="pref_update_only_in_release_period">ليس ضمن مدة الإصدار المتوقعة</string>
+    <string name="pref_update_release_grace_period">مدة سماح الإصدار المتوقعة</string>
+    <string name="pref_update_release_grace_period_info">مدة سماح قصيرة خير من مدة سماح طويلة، وذلك لتخفف الضغط على المصادر. وكلما تُلتمس مدخلة وليس لهذا تحديث تصير مدة الالتماس أطول، وأقصاها ٢٨ يومًا.</string>
+    <string name="manga_modify_calculated_interval_title">خصِّص المدة</string>
+    <plurals name="pref_update_release_following_days">
+        <item quantity="zero">لا يوم بعد</item>
+        <item quantity="one">بعد يوم واحد</item>
+        <item quantity="two">بعد يومين</item>
+        <item quantity="few">بعد %d أيام</item>
+        <item quantity="many">بعد %d يومًا</item>
+        <item quantity="other">بعد %d يوم</item>
+    </plurals>
+    <string name="skipped_reason_not_in_release_period">تُخُطِّيت بسبب عدم توقع صدور اليوم</string>
+    <string name="manga_modify_interval_title">عدِّل المدة</string>
+    <string name="manga_display_modified_interval_title">عيِّن التحديث كلَّ</string>
+    <plurals name="day">
+        <item quantity="zero">لا يوم</item>
+        <item quantity="one">يوم واحد</item>
+        <item quantity="two">يومان</item>
+        <item quantity="few">%d أيام</item>
+        <item quantity="many">%d يومًا</item>
+        <item quantity="other">%d يوم</item>
+    </plurals>
+    <plurals name="pref_update_release_leading_days">
+        <item quantity="zero">لا يوم قبل</item>
+        <item quantity="one">قبل يوم واحد</item>
+        <item quantity="two">قبل يومين</item>
+        <item quantity="few">قبل %d أيام</item>
+        <item quantity="many">قبل %d يومًا</item>
+        <item quantity="other">قبل %d يوم</item>
+    </plurals>
+    <string name="intervals_header">المدة</string>
+    <string name="action_sort_next_updated">التحديث المتوقع القادم</string>
 </resources>

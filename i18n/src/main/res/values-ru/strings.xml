@@ -93,7 +93,7 @@
     <string name="label_settings">Настройки</string>
     <string name="landscape">Альбомная</string>
     <string name="last_read_chapter">Последняя прочитанная глава</string>
-    <string name="left_to_right_viewer">Слева направо</string>
+    <string name="left_to_right_viewer">Постранично (Слева направо)</string>
     <string name="licensed">Лицензировано</string>
     <string name="loading">Загрузка…</string>
     <string name="login">Вход</string>
@@ -133,7 +133,7 @@
     <string name="pref_fullscreen">Полноэкранный режим</string>
     <string name="pref_image_scale_type">Масштабирование</string>
     <string name="pref_keep_screen_on">Не выключать экран</string>
-    <string name="pref_library_columns">Количество серий</string>
+    <string name="pref_library_columns">Размер сетки</string>
     <string name="pref_library_update_interval">Автоматические обновления</string>
     <string name="pref_library_update_restriction">Ограничения обновлений для устройства</string>
     <string name="pref_read_with_volume_keys">Клавиши громкости</string>
@@ -148,7 +148,7 @@
     <string name="pref_zoom_start">Стартовая позиция увеличения</string>
     <string name="reading">Читаю</string>
     <string name="remove_from_library">Удалить из библиотеки</string>
-    <string name="right_to_left_viewer">Справа налево</string>
+    <string name="right_to_left_viewer">Постранично (Справа налево)</string>
     <string name="rotation_force_landscape">Заблокированная альбомная</string>
     <string name="rotation_force_portrait">Заблокированная портретная</string>
     <string name="rotation_free">Системная</string>
@@ -188,8 +188,8 @@
     <string name="used_cache">Использовано: %1$s</string>
     <string name="username">Имя пользователя</string>
     <string name="version">Версия</string>
-    <string name="vertical_viewer">Вертикально</string>
-    <string name="webtoon_viewer">Веб-комикс</string>
+    <string name="vertical_viewer">Постранично (Вертикально)</string>
+    <string name="webtoon_viewer">Длинные страницы</string>
     <string name="white_background">Белый</string>
     <string name="zoom_start_automatic">Автоматически</string>
     <string name="zoom_start_center">По центру</string>
@@ -373,7 +373,6 @@
     <string name="action_newest">Новейший</string>
     <string name="action_move_to_top">В начало</string>
     <string name="action_move_to_bottom">В конец</string>
-    <string name="action_reorganize_by">Переупорядочить</string>
     <string name="channel_ext_updates">Обновления расширений</string>
     <string name="unlock_app">Разблокировать Tachiyomi</string>
     <string name="action_menu">Меню</string>
@@ -381,7 +380,7 @@
     <string name="pref_category_reading">Чтение</string>
     <string name="pref_skip_filtered_chapters">Пропускать отфильтрованные главы</string>
     <string name="action_select_inverse">Выбрать наоборот</string>
-    <string name="vertical_plus_viewer">Непрерывно вертикально</string>
+    <string name="vertical_plus_viewer">Длинные страницы с зазорами</string>
     <string name="pref_webtoon_side_padding">Боковой отступ</string>
     <string name="webtoon_side_padding_25">25%</string>
     <string name="webtoon_side_padding_20">20%</string>
@@ -401,7 +400,6 @@
     <string name="add_to_library">Добавить</string>
     <string name="licenses">Лицензии open-source</string>
     <string name="website">Сайт</string>
-    <string name="pref_confirm_exit">Подтверждать выход</string>
     <string name="recent_manga_time">Гл. %1$s - %2$s</string>
     <string name="local_source_help_guide">Руководство по источнику пользователя</string>
     <string name="last_used_source">Последний использованный источник</string>
@@ -671,7 +669,7 @@
     <string name="webtoon_side_padding_5">5%</string>
     <string name="action_show_manga">Показать серию</string>
     <string name="action_display_cover_only_grid">Сетка без названия</string>
-    <string name="pref_navigate_pan">Панорамирование широких изображений при касании</string>
+    <string name="pref_navigate_pan">Панорамирование широких изображений</string>
     <string name="pref_landscape_zoom">Увеличивать изображение по горизонтали</string>
     <string name="pref_update_only_started">Серия не начата</string>
     <string name="skipped_reason_completed">Пропущено, т.к серия завершена</string>
@@ -752,7 +750,7 @@
     <string name="crash_screen_restart_application">Перезапустить приложение</string>
     <string name="pref_general_summary">Язык приложения, уведомления</string>
     <string name="pref_appearance_summary">Тема, формат даты и времени</string>
-    <string name="pref_library_summary">Категории, глобальное обновление</string>
+    <string name="pref_library_summary">Категории, глобальное обновление, перелистывание глав</string>
     <string name="pref_reader_summary">Режим чтения, отображение, навигация</string>
     <string name="pref_downloads_summary">Автоматическая загрузка, загрузка наперёд</string>
     <string name="pref_tracking_summary">Односторонняя синхронизация прогресса, расширенная синхронизация</string>
@@ -801,7 +799,6 @@
     <string name="information_no_manga_category">Категория пуста</string>
     <string name="pref_library_update_show_tab_badge">Количество непрочитанных глав на иконке «Обновления»</string>
     <string name="copied_to_clipboard_plain">Скопировано в буфер обмена</string>
-    <string name="pref_worker_info">Информация об разработке</string>
     <string name="enhanced_services_not_installed">Доступно, но источник не установлен: %s</string>
     <string name="pref_skip_dupe_chapters">Пропускать повторяющиеся главы</string>
     <string name="confirm_add_duplicate_manga">В вашей библиотеке уже есть серия с таким именем.
@@ -821,7 +818,6 @@
     <string name="split_tall_images">Разделять длинные изображения</string>
     <string name="overlay_header">Наложение</string>
     <string name="pref_page_rotate">Развернуть широкие страницы под размер экрана</string>
-    <string name="missing_chapters_unknown">Могут отсутствовать главы</string>
     <plurals name="missing_chapters">
         <item quantity="one">Отсутствует %1$s глава</item>
         <item quantity="few">Отсутствуют %1$s главы</item>
@@ -829,4 +825,44 @@
         <item quantity="other">Отсутствуют %1$s глав</item>
     </plurals>
     <string name="pref_page_rotate_invert">Отразить ориентацию развёрнутых широких страниц</string>
+    <string name="pref_debug_info">Отладочная информация</string>
+    <string name="pref_chapter_swipe">Перелистывание глав</string>
+    <string name="pref_chapter_swipe_end">Проведите право</string>
+    <string name="pref_chapter_swipe_start">Проведите влево</string>
+    <string name="pref_double_tap_zoom">Двойное нажатие для увеличения</string>
+    <string name="pref_library_columns_per_row">%d в ряд</string>
+    <string name="action_filter_interval_custom">Настраиваемый интервал получения</string>
+    <string name="action_filter_interval_long">Месячное получение (28 дней)</string>
+    <string name="action_filter_interval_dropped">Заброшено\? Прошлые 20+ дней и 2 месяца</string>
+    <plurals name="pref_update_release_following_days">
+        <item quantity="one">через %d день</item>
+        <item quantity="few">через %d дня</item>
+        <item quantity="many">через %d дней</item>
+        <item quantity="other">через %d дней</item>
+    </plurals>
+    <string name="manga_modify_interval_title">Изменить интервал</string>
+    <string name="pref_update_release_grace_period">Внутри предела ожидаемого периода выпуска</string>
+    <plurals name="pref_update_release_leading_days">
+        <item quantity="one">за %d день до</item>
+        <item quantity="few">за %d дня до</item>
+        <item quantity="many">за %d дней до</item>
+        <item quantity="other">за %d дней до</item>
+    </plurals>
+    <string name="intervals_header">Интервалы</string>
+    <string name="manga_display_interval_title">Оценивать каждые</string>
+    <string name="manga_modify_calculated_interval_title">Настроить интервал</string>
+    <string name="action_set_interval">Задать интервал</string>
+    <string name="action_filter_interval_late">Проверка поздних 10+ дней</string>
+    <string name="action_filter_interval_passed">Прошедшая проверка периода</string>
+    <string name="action_sort_next_updated">Следующее ожидамое обновление</string>
+    <string name="pref_update_only_in_release_period">За пределами ожидаемого периода выпуска</string>
+    <string name="manga_display_modified_interval_title">Задать обновления каждые</string>
+    <string name="pref_update_release_grace_period_info">Следует использовать низкий льготный период, чтобы минимизировать нагрузку на источники. Чем больше проверок серий, которые были пропущены, тем длиннее интервал между проверками в сумме 28 дней.</string>
+    <plurals name="day">
+        <item quantity="one">1 день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дней</item>
+    </plurals>
+    <string name="skipped_reason_not_in_release_period">Пропущено, т.к сегодня не ожидается выпуска</string>
 </resources>

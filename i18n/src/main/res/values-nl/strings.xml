@@ -334,7 +334,6 @@
     <string name="action_move_to_bottom">Verplaats naar beneden</string>
     <string name="action_oldest">Oudste</string>
     <string name="action_newest">Nieuwste</string>
-    <string name="action_reorganize_by">Opnieuw organiseren</string>
     <string name="action_menu">Menu</string>
     <string name="action_pin">Vastpinnen</string>
     <string name="label_sources">Bronnen</string>
@@ -403,7 +402,6 @@
     <string name="pref_skip_filtered_chapters">Gefilterde hoofdstukken overslaan</string>
     <string name="pref_cutout_short">Inhoud in uitgesneden gebied laten zien</string>
     <string name="hide_notification_content">Meldingsinhoud verbergen</string>
-    <string name="pref_confirm_exit">Bevestig sluiten</string>
     <string name="action_move_to_top">Verplaats naar top</string>
     <string name="action_unpin">Lospinnen</string>
     <string name="viewer">Leesmodus</string>
@@ -738,7 +736,6 @@
     <string name="pref_reset_user_agent_string">User agent terugzetten naar standaardwaarde</string>
     <string name="track_remove_date_conf_title">Datum verwijderen\?</string>
     <string name="wish_list">Verlanglijst</string>
-    <string name="pref_worker_info">Worker-informatie</string>
     <string name="custom_cover">Aangepaste omslag</string>
     <string name="invalid_location">Ongeldige locatie: %s</string>
     <string name="pref_advanced_summary">Crashlogboeken opslaan, batterijoptimalisaties</string>

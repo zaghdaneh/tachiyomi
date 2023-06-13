@@ -355,7 +355,6 @@
         <item quantity="other">För %d poster</item>
     </plurals>
     <string name="action_menu">Meny</string>
-    <string name="action_reorganize_by">Ändra ordning</string>
     <string name="action_newest">Nyaste</string>
     <string name="action_oldest">Äldsta</string>
     <string name="action_move_to_top">Flytta till toppen</string>
@@ -386,7 +385,6 @@
     <string name="action_select_inverse">Välj omvänd</string>
     <string name="manga_info_collapse">Mindre</string>
     <string name="manga_info_expand">Mer</string>
-    <string name="pref_confirm_exit">Bekräfta utgång</string>
     <string name="confirm_exit">Tryck tillbaka igen för att gå ur</string>
     <string name="information_webview_required">WebView krävs för Tachiyomi</string>
     <string name="recent_manga_time">Kapitel %1$s - %2$s</string>
@@ -766,7 +764,5 @@
     </plurals>
     <string name="pref_page_rotate">Rotera breda sidor så att de passar</string>
     <string name="pref_page_rotate_invert">Vänd orientering av roterade breda sidor</string>
-    <string name="missing_chapters_unknown">Det kan saknas kapitel</string>
-    <string name="pref_worker_info">Information om arbetare</string>
     <string name="information_required_plain">*krävs</string>
 </resources>

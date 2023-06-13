@@ -1,6 +1,8 @@
 package eu.kanade.presentation.reader
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +21,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,6 +35,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import eu.kanade.presentation.util.isTabletUi
 import eu.kanade.tachiyomi.R
+import kotlin.math.roundToInt
 
 @Composable
 fun ChapterNavigator(
@@ -59,20 +65,19 @@ fun ChapterNavigator(
             val backgroundColor = MaterialTheme.colorScheme
                 .surfaceColorAtElevation(3.dp)
                 .copy(alpha = if (isSystemInDarkTheme()) 0.9f else 0.95f)
-
-            val isLeftEnabled = if (isRtl) enabledNext else enabledPrevious
-            if (isLeftEnabled) {
-                FilledIconButton(
-                    onClick = if (isRtl) onNextChapter else onPreviousChapter,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = backgroundColor,
-                    ),
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.SkipPrevious,
-                        contentDescription = stringResource(if (isRtl) R.string.action_next_chapter else R.string.action_previous_chapter),
-                    )
-                }
+            val buttonColor = IconButtonDefaults.filledIconButtonColors(
+                containerColor = backgroundColor,
+                disabledContainerColor = backgroundColor,
+            )
+            FilledIconButton(
+                enabled = if (isRtl) enabledNext else enabledPrevious,
+                onClick = if (isRtl) onNextChapter else onPreviousChapter,
+                colors = buttonColor,
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.SkipPrevious,
+                    contentDescription = stringResource(if (isRtl) R.string.action_next_chapter else R.string.action_previous_chapter),
+                )
             }
 
             if (totalPages > 1) {
@@ -87,17 +92,24 @@ fun ChapterNavigator(
                     ) {
                         Text(text = currentPage.toString())
 
+                        val interactionSource = remember { MutableInteractionSource() }
+                        val sliderDragged by interactionSource.collectIsDraggedAsState()
+                        LaunchedEffect(currentPage) {
+                            if (sliderDragged) {
+                                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                            }
+                        }
                         Slider(
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(horizontal = 8.dp),
                             value = currentPage.toFloat(),
                             valueRange = 1f..totalPages.toFloat(),
-                            steps = totalPages,
+                            steps = totalPages - 2,
                             onValueChange = {
-                                onSliderValueChange(it.toInt() - 1)
-                                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                onSliderValueChange(it.roundToInt() - 1)
                             },
+                            interactionSource = interactionSource,
                         )
 
                         Text(text = totalPages.toString())
@@ -107,19 +119,15 @@ fun ChapterNavigator(
                 Spacer(Modifier.weight(1f))
             }
 
-            val isRightEnabled = if (isRtl) enabledPrevious else enabledNext
-            if (isRightEnabled) {
-                FilledIconButton(
-                    onClick = if (isRtl) onPreviousChapter else onNextChapter,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = backgroundColor,
-                    ),
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.SkipNext,
-                        contentDescription = stringResource(if (isRtl) R.string.action_previous_chapter else R.string.action_next_chapter),
-                    )
-                }
+            FilledIconButton(
+                enabled = if (isRtl) enabledPrevious else enabledNext,
+                onClick = if (isRtl) onPreviousChapter else onNextChapter,
+                colors = buttonColor,
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.SkipNext,
+                    contentDescription = stringResource(if (isRtl) R.string.action_previous_chapter else R.string.action_next_chapter),
+                )
             }
         }
     }
