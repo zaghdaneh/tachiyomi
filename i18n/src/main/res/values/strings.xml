@@ -757,7 +757,7 @@
     <string name="track_remove_finish_date_conf_text">This will remove your previously selected finish date from %s</string>
     <string name="track_delete_title">Remove %s tracking?</string>
     <string name="track_delete_text">This will remove the tracking locally.</string>
-    <string name="track_delete_remote_text">Also remove from %s.</string>
+    <string name="track_delete_remote_text">Also remove from %s</string>
 
     <!-- Category activity -->
     <string name="error_category_exists">A category with this name already exists!</string>
