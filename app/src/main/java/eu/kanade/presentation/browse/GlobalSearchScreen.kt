@@ -2,9 +2,11 @@ package eu.kanade.presentation.browse
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -54,6 +56,7 @@ fun GlobalSearchScreen(
             onClickSource = onClickSource,
             onClickItem = onClickItem,
             onLongClickItem = onLongClickItem,
+            progress = state.progress,
         )
     }
 }
@@ -66,9 +69,17 @@ private fun GlobalSearchContent(
     onClickSource: (CatalogueSource) -> Unit,
     onClickItem: (Manga) -> Unit,
     onLongClickItem: (Manga) -> Unit,
+    progress: Int,
 ) {
+    val listState = rememberLazyListState()
+
+    LaunchedEffect(progress) {
+        listState.scrollToItem(0)
+    }
+
     LazyColumn(
         contentPadding = contentPadding,
+        state = listState,
     ) {
         items.forEach { (source, result) ->
             item(key = source.id) {
