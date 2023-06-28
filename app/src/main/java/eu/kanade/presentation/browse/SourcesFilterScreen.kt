@@ -1,13 +1,19 @@
 package eu.kanade.presentation.browse
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
+import eu.kanade.presentation.browse.components.BaseBrowseItem
 import eu.kanade.presentation.browse.components.BaseSourceItem
 import eu.kanade.presentation.components.AppBar
 import eu.kanade.presentation.more.settings.widget.SwitchPreferenceWidget
@@ -17,7 +23,9 @@ import eu.kanade.tachiyomi.util.system.LocaleHelper
 import tachiyomi.domain.source.model.Source
 import tachiyomi.presentation.core.components.FastScrollLazyColumn
 import tachiyomi.presentation.core.components.material.Scaffold
+import tachiyomi.presentation.core.components.material.padding
 import tachiyomi.presentation.core.screens.EmptyScreen
+import java.util.SortedMap
 
 @Composable
 fun SourcesFilterScreen(
@@ -25,6 +33,7 @@ fun SourcesFilterScreen(
     state: SourcesFilterState.Success,
     onClickLanguage: (String) -> Unit,
     onClickSource: (Source) -> Unit,
+    onClickEnablePinSources: (SortedMap<String, List<Source>>) -> Unit,
 ) {
     Scaffold(
         topBar = { scrollBehavior ->
@@ -47,6 +56,7 @@ fun SourcesFilterScreen(
             state = state,
             onClickLanguage = onClickLanguage,
             onClickSource = onClickSource,
+            onClickEnablePinSources = onClickEnablePinSources,
         )
     }
 }
@@ -57,10 +67,16 @@ private fun SourcesFilterContent(
     state: SourcesFilterState.Success,
     onClickLanguage: (String) -> Unit,
     onClickSource: (Source) -> Unit,
+    onClickEnablePinSources: (SortedMap<String, List<Source>>) -> Unit,
 ) {
     FastScrollLazyColumn(
         contentPadding = contentPadding,
     ) {
+        item {
+            EnablePinItemsButton(
+                onClick = { onClickEnablePinSources(state.items) },
+            )
+        }
         state.items.forEach { (language, sources) ->
             val enabled = language in state.enabledLanguages
             item(
@@ -123,4 +139,31 @@ private fun SourcesFilterItem(
             Checkbox(checked = enabled, onCheckedChange = null)
         },
     )
+}
+
+@Composable
+private fun EnablePinItemsButton(
+    onClick: () -> Unit,
+) {
+    BaseBrowseItem(
+        onClickItem = onClick,
+        content = { EnablePinItemsContent() },
+        action = {},
+    )
+}
+
+@Composable
+private fun RowScope.EnablePinItemsContent() {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = MaterialTheme.padding.medium)
+            .weight(1f),
+    ) {
+        Text(
+            text = stringResource(R.string.action_enable_pinned_sources),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            style = MaterialTheme.typography.bodyMedium,
+        )
+    }
 }

@@ -56,6 +56,33 @@ class SourcesFilterScreenModel(
     fun toggleLanguage(language: String) {
         toggleLanguage.await(language)
     }
+
+    // TODO : find a way to do triple -> quadra
+    fun enablePinnedSources(
+        items: SortedMap<String, List<Source>>,
+    ) {
+        val enabledLanguages = preferences.enabledLanguages().get()
+        val disabledSources = preferences.disabledSources().get()
+        val pinnedSources = preferences.pinnedSources().get()
+
+        items.forEach { (language, langSources) ->
+            if (language !in enabledLanguages) toggleLanguage(language)
+
+            langSources.forEach { source ->
+
+                val sourceId = "${source.id}"
+                if (sourceId in pinnedSources &&
+                    sourceId in disabledSources
+                ) {
+                    toggleSource(source)
+                } else if (sourceId !in pinnedSources &&
+                    sourceId !in disabledSources
+                ) {
+                    toggleSource(source)
+                }
+            }
+        }
+    }
 }
 
 sealed class SourcesFilterState {
