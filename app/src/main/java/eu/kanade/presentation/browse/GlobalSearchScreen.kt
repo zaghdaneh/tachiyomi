@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.DoneAll
 import androidx.compose.material.icons.outlined.FilterList
+import androidx.compose.material.icons.outlined.PushPin
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
@@ -74,7 +76,7 @@ fun GlobalSearchScreen(
                         onClick = { onChangeFilter(GlobalSearchFilter.All) },
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.Outlined.FilterList,
+                                imageVector = Icons.Outlined.DoneAll,
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(FilterChipDefaults.IconSize),
@@ -90,7 +92,7 @@ fun GlobalSearchScreen(
                         onClick = { onChangeFilter(GlobalSearchFilter.PinnedOnly) },
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.Outlined.FilterList,
+                                imageVector = Icons.Outlined.PushPin,
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(FilterChipDefaults.IconSize),
