@@ -1,18 +1,15 @@
 package eu.kanade.tachiyomi.ui.browse.source.globalsearch
 
 import androidx.compose.runtime.Immutable
-import androidx.paging.map
 import eu.kanade.domain.base.BasePreferences
 import eu.kanade.domain.source.service.SourcePreferences
 import eu.kanade.presentation.util.ioCoroutineScope
 import eu.kanade.tachiyomi.source.CatalogueSource
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import tachiyomi.core.util.system.logcat
 import tachiyomi.domain.source.service.SourceManager
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
@@ -28,10 +25,10 @@ class GlobalSearchScreenModel(
     val incognitoMode = preferences.incognitoMode()
     val lastUsedSourceId = sourcePreferences.lastUsedSource()
 
-    val searchPagerFlow = state.map { it.searchFilter }
+    val searchPagerFlow = state.map { Pair(it.searchFilter, it.items) }
         .distinctUntilChanged()
-        .map { filter ->
-            state.value.items
+        .map { (filter, items) ->
+            items
                 .filterNot { (_, result) ->
                     filter == GlobalSearchFilter.AvailableOnly &&
                         result is SearchItemResult.Error
@@ -39,8 +36,7 @@ class GlobalSearchScreenModel(
                 .filterNot { (source, _) ->
                     filter == GlobalSearchFilter.PinnedOnly && "${source.id}" !in sourcePreferences.pinnedSources().get()
                 }
-        }
-        .stateIn(ioCoroutineScope, SharingStarted.Lazily, state.value.items)
+        }.stateIn(ioCoroutineScope, SharingStarted.Lazily, state.value.items)
 
     init {
         extensionFilter = initialExtensionFilter
@@ -74,7 +70,6 @@ class GlobalSearchScreenModel(
 
     fun setFilter(filter: GlobalSearchFilter) {
         mutableState.update { it.copy(searchFilter = filter) }
-        logcat { "HOSSMARK : state filter is ${state.value.searchFilter}" }
     }
 
     override fun getItems(): Map<CatalogueSource, SearchItemResult> {

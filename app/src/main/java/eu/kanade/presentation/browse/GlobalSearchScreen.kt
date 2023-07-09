@@ -81,7 +81,7 @@ fun GlobalSearchScreen(
                             )
                         },
                         label = {
-                            Text(text = "all")
+                            Text(text = stringResource(id = R.string.all))
                         },
                     )
 
@@ -97,7 +97,7 @@ fun GlobalSearchScreen(
                             )
                         },
                         label = {
-                            Text(text = "Pinned only")
+                            Text(text = stringResource(id = R.string.pinned_sources))
                         },
                     )
 
@@ -113,7 +113,7 @@ fun GlobalSearchScreen(
                             )
                         },
                         label = {
-                            Text(text = "Available only")
+                            Text(text = stringResource(id = R.string.available))
                         },
                     )
                 }
