@@ -29,13 +29,7 @@ class GlobalSearchScreenModel(
         .distinctUntilChanged()
         .map { (filter, items) ->
             items
-                .filterNot { (_, result) ->
-                    filter == GlobalSearchFilter.AvailableOnly &&
-                        result is SearchItemResult.Error
-                }
-                .filterNot { (source, _) ->
-                    filter == GlobalSearchFilter.PinnedOnly && "${source.id}" !in sourcePreferences.pinnedSources().get()
-                }
+                .filter { (source, result) -> isSourceVisible(filter, source, result) }
         }.stateIn(ioCoroutineScope, SharingStarted.Lazily, state.value.items)
 
     init {
@@ -54,6 +48,14 @@ class GlobalSearchScreenModel(
             .filter { it.lang in enabledLanguages }
             .filterNot { "${it.id}" in disabledSources }
             .sortedWith(compareBy({ "${it.id}" !in pinnedSources }, { "${it.name.lowercase()} (${it.lang})" }))
+    }
+
+    private fun isSourceVisible(filter: GlobalSearchFilter, source: CatalogueSource, result: SearchItemResult): Boolean {
+        return when (filter) {
+            GlobalSearchFilter.AvailableOnly -> result !is SearchItemResult.Error
+            GlobalSearchFilter.PinnedOnly -> "${source.id}" in sourcePreferences.pinnedSources().get()
+            GlobalSearchFilter.All -> true
+        }
     }
 
     override fun updateSearchQuery(query: String?) {
