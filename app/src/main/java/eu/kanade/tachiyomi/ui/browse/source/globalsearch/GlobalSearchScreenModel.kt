@@ -52,7 +52,7 @@ class GlobalSearchScreenModel(
 
     private fun isSourceVisible(filter: GlobalSearchFilter, source: CatalogueSource, result: SearchItemResult): Boolean {
         return when (filter) {
-            GlobalSearchFilter.AvailableOnly -> result !is SearchItemResult.Error
+            GlobalSearchFilter.AvailableOnly -> result is SearchItemResult.Success && !result.isEmpty
             GlobalSearchFilter.PinnedOnly -> "${source.id}" in sourcePreferences.pinnedSources().get()
             GlobalSearchFilter.All -> true
         }
@@ -78,6 +78,7 @@ class GlobalSearchScreenModel(
         return mutableState.value.items
     }
 }
+
 enum class GlobalSearchFilter {
     All, PinnedOnly, AvailableOnly
 }

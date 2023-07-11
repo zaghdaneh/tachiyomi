@@ -115,7 +115,7 @@ fun GlobalSearchScreen(
                             )
                         },
                         label = {
-                            Text(text = stringResource(id = R.string.available))
+                            Text(text = stringResource(id = R.string.has_results))
                         },
                     )
                 }
